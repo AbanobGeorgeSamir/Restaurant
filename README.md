@@ -1,52 +1,68 @@
-# 🍽️ Restaurant Manager
+# Restaurant Manager
 
-A Laravel restaurant management application with meal and category administration, user authentication, MongoDB Atlas integration, Docker support, and Vercel deployment configuration.
+Laravel restaurant management application with meal and category administration, user accounts and a MongoDB Atlas database. It ships with Docker support and a Vercel deployment configuration.
 
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-## ✨ Features
+<!-- Add screenshots here, for example: ![Home](docs/home.png) -->
 
-- 🔐 Authentication (login, register, logout)
-- 🍽️ Meal management — create, edit, delete, and view meals
-- 📂 Category management for organizing meals
-- 🗄️ MongoDB Atlas as the database backend
-- 🐳 Docker support for containerized deployment
-- 🚀 Vercel deployment configuration
+## Features
 
-## 🛠️ Tech Stack
+- Home page listing meals, with a filter by category (`/category/{id}`)
+- Create, edit and delete meals (name, slug, description, price, image and category)
+- Create, edit and delete categories
+- Registration, login, logout and profile management through Laravel Breeze
+- MongoDB documents through the `mongodb/laravel-mongodb` driver and Eloquent-style models
+- PHPUnit feature tests for authentication and profile flows
 
-| Layer | Technology |
-|---|---|
-| Framework | Laravel 10+ |
-| Templates | Blade |
-| Database | MongoDB Atlas (via mongodb driver) |
-| Deployment | Docker, Vercel |
+## Tech Stack
 
-## 🚀 Getting Started
+| Layer | Technologies |
+| --- | --- |
+| Backend | PHP 8.2+, Laravel 12, Laravel Breeze |
+| Database | MongoDB Atlas via `mongodb/laravel-mongodb` |
+| Frontend | Blade templates, Tailwind CSS, Alpine.js, Vite |
+| Tooling | Docker, Docker Compose, PHPUnit |
+| Hosting | Vercel configuration (`vercel.json`) |
+
+## Getting Started
+
+**Requirements:** PHP 8.2+ with the `mongodb` extension, Composer, Node.js and a MongoDB Atlas database.
 
 ```bash
 git clone https://github.com/AbanobGeorgeSamir/Restaurant.git
 cd Restaurant
 
 cp .env.example .env
-# Set DB_CONNECTION=mongodb, MONGODB_URI, DB_DATABASE
+# set DB_CONNECTION=mongodb, MONGODB_URI and MONGODB_DATABASE in .env
 
 composer install
 npm install
 php artisan key:generate
+npm run build
 php artisan serve
-npm run dev
 ```
 
-**Or with Docker:**
+### With Docker
+
 ```bash
+cp .env.example .env     # fill in MONGODB_URI, then run: php artisan key:generate --show
 docker compose up --build
 ```
 
-## 👤 Author
+The app is served on `http://localhost:8000`. Docker Compose reads every secret from your local `.env` file, which is git-ignored. Never write credentials into `docker-compose.yml` or commit them.
 
-**Abanoub George Samir** — [LinkedIn](https://www.linkedin.com/in/abanob-george-samir) · [GitHub](https://github.com/AbanobGeorgeSamir)
+## Testing
+
+```bash
+php artisan test
+```
+
+## Author
+
+**Abanoub George Samir** · Junior Full-Stack Developer · [Portfolio](https://devabanobgeorge.vercel.app) · [LinkedIn](https://www.linkedin.com/in/abanob-george-samir) · [GitHub](https://github.com/AbanobGeorgeSamir)
