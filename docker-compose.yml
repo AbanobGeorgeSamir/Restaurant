@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    # Secrets such as APP_KEY and MONGODB_URI are read from your local .env file,
+    # which is git-ignored. Never write credentials in this file.
+    env_file:
+      - .env
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+    volumes:
+      - ./:/var/www/html
+    restart: unless-stopped
